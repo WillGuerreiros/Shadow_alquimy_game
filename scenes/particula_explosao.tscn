@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5ddq3aqgwixb"]
+[gd_scene load_steps=6 format=3 uid="uid://b5ddq3aqgwixb"]
 
 [ext_resource type="Texture2D" uid="uid://b3n1bvpb1g563" path="res://Assets/gota.png" id="1_ml5u0"]
+[ext_resource type="Script" path="res://scenes/particula_explosao.gd" id="2_qrhvk"]
 
 [sub_resource type="Curve" id="Curve_2xf36"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -26,3 +27,4 @@ texture = ExtResource("1_ml5u0")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
+script = ExtResource("2_qrhvk")

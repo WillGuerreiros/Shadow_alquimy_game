@@ -11,6 +11,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player = $"."
 
 var load_pocao = preload("res://scenes/pocao.tscn")
+var item_pocao = PackedScene
+
 
 #handle state machine
 var main_sm: LimboHSM
@@ -31,10 +33,8 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	elif direction <=-1:
 		velocity.x = direction * SPEED
-		sprite.set_flip_h(true)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	flip_sprite(direction)
 	move_and_slide()
 	
@@ -51,10 +51,18 @@ func _unhandled_input(event):
 
 
 func flip_sprite(direction):
-	if direction >= 1:
+	if direction >= 1 and get_local_mouse_position().x > 0:
 		sprite.set_flip_h(false)
-	elif direction <= -1:
+	elif direction <= -1 and get_local_mouse_position().x < 0:
 		sprite.set_flip_h(true)
+	elif direction >= 1 and get_local_mouse_position().x < 0:
+		sprite.set_flip_h(true)
+	elif direction <= -1 and get_local_mouse_position().x > 0:
+		sprite.set_flip_h(false)
+	elif get_local_mouse_position().x <0:
+		sprite.set_flip_h(true)
+	else:
+		sprite.set_flip_h(false)
 
 func iniciate_state_machine():
 	main_sm = LimboHSM.new()
@@ -80,14 +88,10 @@ func iniciate_state_machine():
 	
 	main_sm.initialize(self)
 	main_sm.set_active(true)
-	
-
-
 
 func idle_start():
 	print("idle_start")
 	sprite.play("idle")
-	
 
 func idle_update(delta: float):
 	#print("idle_update")
@@ -111,7 +115,6 @@ func use_item_update(delta: float):
 	#print("use_item_update")
 	if is_on_floor():
 		main_sm.dispatch(&"all_to_idle")
-	
 
 func jump_start():
 	print("jump_start")
@@ -119,15 +122,15 @@ func jump_start():
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-
 func jump_update(delta: float):
 	print("jump_update")
 	if is_on_floor():
 		main_sm.dispatch(&"all_to_idle")
 
 func atira_pocao():
-	var item_pocao = load_pocao.instantiate()
+	item_pocao = load_pocao.instantiate()
 	item_pocao.position = get_local_mouse_position()
+	print(item_pocao.position)
 	add_child(item_pocao)
 	item_pocao.reparent(player.get_parent())
 	item_pocao.linear_velocity = Vector2(get_local_mouse_position())*5
