@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ddq3aqgwixb"]
+
+[ext_resource type="Texture2D" uid="uid://b3n1bvpb1g563" path="res://Assets/gota.png" id="1_ml5u0"]
+
+[sub_resource type="Curve" id="Curve_2xf36"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_drtnb"]
+curve = SubResource("Curve_2xf36")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b1jg8"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-4, 0, 0)
+spread = 90.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_drtnb")
+
+[node name="particula_explosao" type="GPUParticles2D"]
+rotation = 4.71239
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_b1jg8")
+texture = ExtResource("1_ml5u0")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0

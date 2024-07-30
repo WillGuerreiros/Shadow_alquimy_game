@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://fwiiwwcvgrrt"]
+
+[ext_resource type="Texture2D" uid="uid://dl6oibbobpami" path="res://Assets/pocao.png" id="1_n2d2l"]
+[ext_resource type="Script" path="res://Scripts/pocao.gd" id="1_tc445"]
+[ext_resource type="Texture2D" uid="uid://baya38getfa8b" path="res://Assets/elementopocao.png" id="3_3equ4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vr8q3"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tkoq"]
+radius = 4.0
+
+[node name="pocao" type="RigidBody2D"]
+collision_mask = 3
+mass = 1000.0
+gravity_scale = 0.5
+script = ExtResource("1_tc445")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_vr8q3")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_n2d2l")
+
+[node name="sprite_elemento" type="Sprite2D" parent="sprite"]
+texture = ExtResource("3_3equ4")
+
+[node name="area_detec" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_detec"]
+shape = SubResource("CircleShape2D_0tkoq")
+
+[connection signal="body_entered" from="area_detec" to="." method="_on_area_detec_body_entered"]
