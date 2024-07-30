@@ -24,14 +24,13 @@ var main_sm: LimboHSM
 
 func _ready():
 	iniciate_state_machine()
-	elemento_cajado.self_modulate = define_elemento()
+	elemento_cajado.self_modulate = GameManager.define_elemento()
 
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("moveLeft", "moveRight")
@@ -44,21 +43,14 @@ func _physics_process(delta):
 	flip_sprite(direction)
 	move_and_slide()
 	
+	elemento_cajado.self_modulate = GameManager.define_elemento()
+	
 
 func _unhandled_input(event):
 	if event.is_action_pressed("jump"):
 		main_sm.dispatch(&"to_jump")
 	elif event.is_action_pressed("useItem"):
 		main_sm.dispatch(&"to_use_item")
-
-func define_elemento():
-	match elemento:
-		elementoenum.FIRE:
-			return Color(2, 0.270588, 0, 1)
-		elementoenum.WATER:
-			return Color(0.254902, 0.411765, 1.882353, 1)
-		elementoenum.WEED:
-			return Color(0, 1.980392, 0.603922, 1)
 
 
 func flip_sprite(direction):
