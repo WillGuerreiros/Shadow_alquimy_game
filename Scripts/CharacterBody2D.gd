@@ -9,9 +9,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $sprite
 @onready var player = $"."
+@onready var cajado = $cajado
+@onready var elemento_cajado = $cajado/elemento_cajado
 
 var load_pocao = preload("res://scenes/pocao.tscn")
 var item_pocao = PackedScene
+@export var elemento: elementoenum
+
+enum elementoenum {FIRE, WATER, WEED}
 
 
 #handle state machine
@@ -19,6 +24,7 @@ var main_sm: LimboHSM
 
 func _ready():
 	iniciate_state_machine()
+	elemento_cajado.self_modulate = define_elemento()
 
 
 func _physics_process(delta):
@@ -38,8 +44,6 @@ func _physics_process(delta):
 	flip_sprite(direction)
 	move_and_slide()
 	
-	#print(main_sm.get_active_state())
-	#print("mouse position" + str(get_local_mouse_position()))
 
 func _unhandled_input(event):
 	if event.is_action_pressed("jump"):
@@ -47,7 +51,14 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("useItem"):
 		main_sm.dispatch(&"to_use_item")
 
-
+func define_elemento():
+	match elemento:
+		elementoenum.FIRE:
+			return Color(2, 0.270588, 0, 1)
+		elementoenum.WATER:
+			return Color(0.254902, 0.411765, 1.882353, 1)
+		elementoenum.WEED:
+			return Color(0, 1.980392, 0.603922, 1)
 
 
 func flip_sprite(direction):
