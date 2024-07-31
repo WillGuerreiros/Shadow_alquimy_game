@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c816yg1hfqlnb"]
+[gd_scene load_steps=12 format=3 uid="uid://c816yg1hfqlnb"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_2naan"]
 [ext_resource type="Texture2D" uid="uid://hqbt3mxsxcuh" path="res://Assets/monochrome_tilemap_transparent.png" id="1_tvolf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Environment" uid="uid://d3atst051lnxh" path="res://scenes/bloom.tres" id="3_g5ro3"]
 [ext_resource type="PackedScene" uid="uid://fwiiwwcvgrrt" path="res://scenes/pocao.tscn" id="5_ubri1"]
 [ext_resource type="PackedScene" uid="uid://b5ddq3aqgwixb" path="res://scenes/particula_explosao.tscn" id="6_na3u6"]
+[ext_resource type="PackedScene" uid="uid://dmi11fvp7mw8h" path="res://scenes/enemy.tscn" id="8_sm62j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4y8rm"]
 texture = ExtResource("1_tvolf")
@@ -1528,6 +1529,7 @@ environment = ExtResource("3_g5ro3")
 position = Vector2(17, 661)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(193, 3)
 zoom = Vector2(3, 3)
 position_smoothing_speed = 3.0
 rotation_smoothing_speed = 3.0
@@ -1545,3 +1547,6 @@ editor_draw_drag_margin = true
 position = Vector2(186, 673)
 
 [node name="particula_explosao" parent="pocao" instance=ExtResource("6_na3u6")]
+
+[node name="Enemy" parent="." instance=ExtResource("8_sm62j")]
+position = Vector2(154, 671)

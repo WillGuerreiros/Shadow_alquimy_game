@@ -5,13 +5,19 @@ enum elementoenum {FIRE, WATER, WEED}
 @export var elemento : elementoenum
 var currentElemento : elementoenum
 
+@onready var area_2d = $Area2D
+@onready var camera_2d = $Camera2D
+
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(currentElemento)
 	#select element
 	if Input.is_action_just_pressed("selectWepon1"):
 		elemento = elementoenum.FIRE
@@ -35,4 +41,7 @@ func define_elemento():
 		elementoenum.WEED:
 			currentElemento = elemento
 			return Color(0, 1.980392, 0.603922, 1)
+
+
+
 
