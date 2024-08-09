@@ -5,7 +5,7 @@ class_name pocaoClass
 @onready var pocao = $"."
 @onready var sprite_elemento = $sprite/sprite_elemento
 
-
+var currentElemento = GameManager.define_elemento()
 var load_particula = preload("res://scenes/particula_explosao.tscn")
 
 
@@ -18,7 +18,7 @@ func adiciona_particula():
 	var particula = load_particula.instantiate()
 	particula.emitting = true
 	particula.position = global_position
-	particula.self_modulate = GameManager.define_elemento()
+	particula.self_modulate = currentElemento
 	get_tree().current_scene.add_child(particula)
 	queue_free()
 
@@ -28,7 +28,7 @@ func timer_selfdestruction():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite_elemento.self_modulate = GameManager.define_elemento()
+	sprite_elemento.self_modulate = currentElemento
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

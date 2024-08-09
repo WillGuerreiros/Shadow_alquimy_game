@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c816yg1hfqlnb"]
+[gd_scene load_steps=10 format=3 uid="uid://c816yg1hfqlnb"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_2naan"]
 [ext_resource type="Texture2D" uid="uid://hqbt3mxsxcuh" path="res://Assets/monochrome_tilemap_transparent.png" id="1_tvolf"]
 [ext_resource type="PackedScene" uid="uid://bxi8jn8ncab3q" path="res://scenes/Player.tscn" id="2_epu6r"]
 [ext_resource type="Texture2D" uid="uid://mradbhtanhw8" path="res://Assets/tile_0000.png" id="2_qkwg6"]
 [ext_resource type="Environment" uid="uid://d3atst051lnxh" path="res://scenes/bloom.tres" id="3_g5ro3"]
-[ext_resource type="PackedScene" uid="uid://fwiiwwcvgrrt" path="res://scenes/pocao.tscn" id="5_ubri1"]
-[ext_resource type="PackedScene" uid="uid://b5ddq3aqgwixb" path="res://scenes/particula_explosao.tscn" id="6_na3u6"]
 [ext_resource type="PackedScene" uid="uid://dmi11fvp7mw8h" path="res://scenes/enemy.tscn" id="8_sm62j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4y8rm"]
@@ -1543,10 +1541,11 @@ drag_bottom_margin = 0.85
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="pocao" parent="." instance=ExtResource("5_ubri1")]
-position = Vector2(186, 673)
-
-[node name="particula_explosao" parent="pocao" instance=ExtResource("6_na3u6")]
-
 [node name="Enemy" parent="." instance=ExtResource("8_sm62j")]
 position = Vector2(154, 671)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_sm62j")]
+position = Vector2(446, 669)
+
+[node name="Enemy3" parent="." instance=ExtResource("8_sm62j")]
+position = Vector2(619, 662)

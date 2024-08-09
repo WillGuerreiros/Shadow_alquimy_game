@@ -93,40 +93,32 @@ func iniciate_state_machine():
 	main_sm.set_active(true)
 
 func idle_start():
-	print("idle_start")
 	sprite.play("idle")
 
 func idle_update(delta: float):
-	#print("idle_update")
 	if velocity.x != 0:
 		main_sm.dispatch(&"to_walk")
 
 func walk_start():
-	print("walk_start")
 	sprite.play("walk")
 
 func walk_update(delta: float):
-	print("walk_update")
 	if velocity.x == 0:
 		main_sm.dispatch(&"all_to_idle")
 
 func use_item_start():
-	print("use_item_start")
 	atira_pocao()
 
 func use_item_update(delta: float):
-	#print("use_item_update")
 	if is_on_floor():
 		main_sm.dispatch(&"all_to_idle")
 
 func jump_start():
-	print("jump_start")
 	# Handle jump.
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 func jump_update(delta: float):
-	print("jump_update")
 	if is_on_floor():
 		main_sm.dispatch(&"all_to_idle")
 
