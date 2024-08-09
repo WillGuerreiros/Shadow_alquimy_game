@@ -70,3 +70,4 @@ frame_progress = 1.0
 polygon = PackedVector2Array(0, 7, 70, 7, 80, -15, 25, -45, -25, -45, -80, -15, -70, 7)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
