@@ -13,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	move_and_slide()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity/100 * delta
@@ -20,13 +21,13 @@ func _physics_process(delta):
 	if target:
 		var velocity = global_position.direction_to(target.global_position)
 		move_and_collide(velocity * SPEED * delta)
-	move_and_slide()
+
 
 
 func _on_area_2d_body_entered(body):
 	print("detectou body entrou na area,tipo:  "+ str(body))
 	if body.is_in_group("pocao"):
-		if typeElementEnemy == 0 and body.currentElemento == Color(2, 0.270588, 0, 1) :
+		if typeElementEnemy == 0 and body.currentElemento == GameManager.red :
 			print("sao mesmo elemento")
 			target = body
 
