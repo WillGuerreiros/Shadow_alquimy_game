@@ -124,8 +124,7 @@ func jump_update(delta: float):
 
 func atira_pocao():
 	item_pocao = load_pocao.instantiate()
-	item_pocao.position = get_local_mouse_position()
-	print(item_pocao.position)
 	add_child(item_pocao)
 	item_pocao.reparent(player.get_parent())
-	item_pocao.linear_velocity = Vector2(get_local_mouse_position())*5
+	item_pocao.position = position + Vector2(10,-10)
+	print(item_pocao.position)

@@ -12,8 +12,6 @@ radius = 4.0
 
 [node name="pocao" type="RigidBody2D" groups=["pocao"]]
 collision_mask = 3
-mass = 1000.0
-gravity_scale = 0.5
 script = ExtResource("1_tc445")
 
 [node name="shape" type="CollisionShape2D" parent="."]
