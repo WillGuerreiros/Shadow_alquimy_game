@@ -30,7 +30,7 @@ func timer_selfdestruction():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite_elemento.self_modulate = currentElemento
-	apply_impulse(get_local_mouse_position()*2,get_local_mouse_position())
+	apply_impulse(get_local_mouse_position()*2.5,get_local_mouse_position())
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
