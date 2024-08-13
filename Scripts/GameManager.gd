@@ -1,12 +1,14 @@
 extends Node
 
+class_name gamemanagerclass
+
 enum elementoenum {FIRE, WATER, WEED}
 
 @export var elemento : elementoenum
 var currentElemento : elementoenum
+var posicaoPlayer = null
 
-@onready var area_2d = $Area2D
-@onready var camera_2d = $Camera2D
+
 
 const red = Color(2, 0.270588, 0, 1)
 const blue = Color(0.254902, 0.411765, 1.882353, 1)
@@ -15,10 +17,8 @@ const weed = Color(0, 1.980392, 0.603922, 1)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#select element
 	if Input.is_action_just_pressed("selectWepon1"):
 		elemento = elementoenum.FIRE
 		currentElemento = elemento
@@ -41,7 +41,5 @@ func define_elemento():
 		elementoenum.WEED:
 			currentElemento = elemento
 			return weed
-
-
 
 

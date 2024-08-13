@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bxi8jn8ncab3q"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_wfdxy"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_5sny4"]
 [ext_resource type="Texture2D" uid="uid://yi31pkru4lau" path="res://Assets/PLAYER.png" id="2_a0amp"]
 [ext_resource type="Script" path="res://Scripts/Camera2D.gd" id="2_f8it8"]
 [ext_resource type="Texture2D" uid="uid://cmgnp8t87rby5" path="res://Assets/cajado.png" id="3_lt8rc"]
@@ -130,7 +130,7 @@ height = 18.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 3
-script = ExtResource("1_wfdxy")
+script = ExtResource("1_5sny4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

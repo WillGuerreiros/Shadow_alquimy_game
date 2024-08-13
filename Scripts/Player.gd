@@ -128,3 +128,4 @@ func atira_pocao():
 	item_pocao.reparent(player.get_parent())
 	item_pocao.position = position + Vector2(10,-10)
 	print(item_pocao.position)
+
