@@ -8,9 +8,9 @@ const JUMP_VELOCITY = -200.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $sprite
-@onready var player = $"."
 @onready var cajado = $cajado
 @onready var elemento_cajado = $cajado/elemento_cajado
+@onready var player = $"."
 
 var load_pocao = preload("res://scenes/pocao.tscn")
 var item_pocao = PackedScene

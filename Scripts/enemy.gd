@@ -7,8 +7,7 @@ const JUMP_VELOCITY = -10
 
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-
-
+  
 
 var targetPocaoFollow := false
 var targetPocaoRun := false
@@ -41,8 +40,8 @@ func _physics_process(delta):
 func change_position_target(target):
 	targetChange = false
 	ultimaposicao = position
-	position = get_parent().get_child(2).position
-	get_parent().get_child(2).position = ultimaposicao
+	position = get_tree().get_nodes_in_group("player")[0].position
+	get_tree().get_nodes_in_group("player")[0].position = ultimaposicao
 	
 
 func run_from_target(target,delta):
